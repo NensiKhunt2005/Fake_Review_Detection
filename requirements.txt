@@ -1,0 +1,14 @@
+transformers
+accelerate
+torch
+pandas
+scikit-learn
+lime
+shap
+datasets
+tqdm
+python-multipart
+jinja2
+fastapi
+uvicorn
+pydantic

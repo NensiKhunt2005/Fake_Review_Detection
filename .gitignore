@@ -1,0 +1,55 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+venv/
+ENV/
+
+# Model files (if needed, though these are usually required for the app)
+# Avoid git-ignoring the models if they are small, but BERT is usually large.
+# backend/model/
+
+# React / Frontend
+frontend/node_modules/
+frontend/build/
+.eslintcache
+
+# Extension
+extension/node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+
+# Custom
+.env
+*.log
+
+
+fake_review_detection_detailed_modules.pdf
+
+# Large files
+backend/model/bert_model/model.safetensors
+results/

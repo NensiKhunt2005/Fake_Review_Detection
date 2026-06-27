@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="popup.css">
+    <title>Fake Review Detector</title>
+</head>
+
+<body>
+    <div class="popup-container">
+        <header>
+            <div class="logo-area">
+                <span class="logo-icon">🛡️</span>
+                <h3>Detector</h3>
+            </div>
+            <button id="scan-btn" class="primary-btn">Scan Page</button>
+        </header>
+
+        <main id="main-content">
+            <div id="initial-state" class="state-view">
+                <p class="hint">Open a product page on Amazon or Flipkart and click 'Scan Page' to analyze reviews.</p>
+            </div>
+
+            <div id="loading-state" class="state-view hidden">
+                <div class="spinner"></div>
+                <p>Analyzing reviews...</p>
+            </div>
+
+            <div id="results-state" class="state-view hidden">
+                <div class="score-section">
+                    <div class="score-circle">
+                        <span id="trust-score-val">--</span>
+                        <small>/10</small>
+                    </div>
+                    <p class="score-label">Trust Score</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card genuine">
+                        <span class="stat-label">Genuine</span>
+                        <span id="genuine-pct" class="stat-val">--%</span>
+                    </div>
+                    <div class="stat-card suspicious">
+                        <span class="stat-label">Suspicious</span>
+                        <span id="suspicious-pct" class="stat-val">--%</span>
+                    </div>
+                </div>
+
+                <div class="info-row">
+                    <span>Analyzed:</span>
+                    <span id="total-reviews">0 reviews</span>
+                </div>
+
+                <div class="risk-section">
+                    <h4>Risk Indicators</h4>
+                    <ul id="risk-list">
+                        <!-- Risk items will be injected here -->
+                    </ul>
+                </div>
+
+                <button id="dashboard-btn" class="secondary-btn">View Detailed Report</button>
+            </div>
+        </main>
+    </div>
+    <script src="popup.js"></script>
+</body>
+
+</html>
