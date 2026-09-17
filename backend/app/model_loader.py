@@ -1,9 +1,7 @@
 from transformers import AutoTokenizer, BertForSequenceClassification
 import torch
 import os
-from pathlib import Path
-
-BASE_DIR = Path(__file__).resolve().parent.parent
+from .config import settings
 
 class ModelLoader:
     def __init__(self, model_path, tokenizer_path):
@@ -39,11 +37,12 @@ class ModelLoader:
         return {
             "prediction": "Fake" if prediction.item() == 1 else "Genuine",
             "confidence": float(confidence.item()),
+            "probability": float(probs[0][prediction.item()].item()),
             "label_id": int(prediction.item())
         }
 
 # Singleton instance
 loader = ModelLoader(
-    model_path=str(BASE_DIR / "model" / "bert_model"),
-    tokenizer_path=str(BASE_DIR / "model" / "tokenizer")
+    model_path=settings.model_path,
+    tokenizer_path=settings.tokenizer_path
 )

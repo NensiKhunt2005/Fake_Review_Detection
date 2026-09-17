@@ -8,7 +8,8 @@ import {
   CheckCircle,
   Search,
   Info,
-  ArrowRight
+  ArrowRight,
+  Gauge
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -25,7 +26,7 @@ export default function Home() {
     setError(null);
 
     try {
-      const response = await axios.post('http://localhost:8000/api/predict', {
+      const response = await axios.post('http://localhost:8000/predict', {
         review_text: review
       });
       setResult(response.data);
@@ -49,7 +50,7 @@ export default function Home() {
             <ShieldCheck color="white" size={32} />
           </motion.div>
           <h1 className="text-4xl font-black tracking-tight text-gray-900 mb-4">Fake Review Detector</h1>
-          <p className="text-lg text-gray-500 font-medium">Empower your shopping with AI-driven credibility analysis.</p>
+          <p className="text-lg text-gray-500 font-medium">Paste one review for a quick BERT and LIME credibility check.</p>
         </header>
 
         <main className="bg-white rounded-3xl p-8 shadow-sm border border-gray-100">
@@ -118,6 +119,19 @@ export default function Home() {
                 </div>
               </div>
 
+              <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div className="bg-white/70 border border-gray-100 rounded-2xl p-4">
+                  <div className="flex items-center gap-2 text-gray-400 font-bold uppercase text-[10px] tracking-widest mb-1">
+                    <Gauge size={13} /> Probability
+                  </div>
+                  <p className="text-lg font-black">{((result.probability || result.confidence) * 100).toFixed(1)}%</p>
+                </div>
+                <div className="bg-white/70 border border-gray-100 rounded-2xl p-4">
+                  <div className="text-gray-400 font-bold uppercase text-[10px] tracking-widest mb-1">Recommendation</div>
+                  <p className="text-sm font-bold">{result.prediction === 'Fake' ? 'Inspect this review before trusting it.' : 'This review looks more natural.'}</p>
+                </div>
+              </div>
+
               {result.explanation && (
                 <div className="mt-8 pt-8 border-t border-gray-200/50">
                   <h3 className="text-gray-400 font-bold uppercase text-[10px] tracking-widest flex items-center gap-2 mb-4">
@@ -130,6 +144,13 @@ export default function Home() {
                       </span>
                     ))}
                   </div>
+                  {result.reasons && (
+                    <div className="mt-5 space-y-2">
+                      {result.reasons.map((reason) => (
+                        <p key={reason} className="text-sm text-gray-600 leading-6">{reason}</p>
+                      ))}
+                    </div>
+                  )}
                 </div>
               )}
             </motion.div>

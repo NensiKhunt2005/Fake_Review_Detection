@@ -11,7 +11,7 @@
 }
 
 body {
-    width: 320px;
+    width: 360px;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     margin: 0;
     color: var(--text);
@@ -36,7 +36,16 @@ header {
 }
 
 .logo-icon {
-    font-size: 20px;
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    background: var(--primary);
+    color: white;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 800;
 }
 
 header h3 {
@@ -63,7 +72,6 @@ header h3 {
 
 .secondary-btn {
     width: 100%;
-    margin-top: 16px;
     padding: 10px;
     background: white;
     border: 1px solid var(--border);
@@ -81,7 +89,7 @@ header h3 {
 
 .state-view {
     text-align: center;
-    min-height: 200px;
+    min-height: 210px;
 }
 
 .hidden {
@@ -93,6 +101,43 @@ header h3 {
     font-size: 13px;
     line-height: 1.5;
     margin-top: 40px;
+}
+
+.hint.error {
+    color: var(--danger);
+}
+
+.product-summary {
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 12px;
+    margin-bottom: 16px;
+}
+
+.product-summary h4 {
+    margin: 8px 0 4px;
+    font-size: 14px;
+    line-height: 1.35;
+    max-height: 40px;
+    overflow: hidden;
+}
+
+.product-summary p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 12px;
+}
+
+.site-pill {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid var(--border);
+    color: var(--primary);
+    border-radius: 999px;
+    padding: 3px 8px;
+    font-size: 11px;
+    font-weight: 700;
+    background: #eef2ff;
 }
 
 .spinner {
@@ -193,6 +238,13 @@ header h3 {
     color: var(--text-muted);
     padding: 8px 0;
     border-top: 1px solid var(--border);
+    gap: 16px;
+}
+
+.info-row span:last-child {
+    text-align: right;
+    font-weight: 700;
+    color: var(--text);
 }
 
 .risk-section {
@@ -224,4 +276,11 @@ header h3 {
     font-size: 11px;
     color: var(--text);
     border: 1px solid var(--border);
+}
+
+.actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 16px;
 }

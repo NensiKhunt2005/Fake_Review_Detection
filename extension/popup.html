@@ -12,10 +12,10 @@
     <div class="popup-container">
         <header>
             <div class="logo-area">
-                <span class="logo-icon">🛡️</span>
-                <h3>Detector</h3>
+                <span class="logo-icon">FR</span>
+                <h3>Fake Review Detector</h3>
             </div>
-            <button id="scan-btn" class="primary-btn">Scan Page</button>
+            <button id="scan-btn" class="primary-btn">Analyze</button>
         </header>
 
         <main id="main-content">
@@ -29,6 +29,12 @@
             </div>
 
             <div id="results-state" class="state-view hidden">
+                <div class="product-summary">
+                    <span id="site-name" class="site-pill">Product page</span>
+                    <h4 id="product-name">Product</h4>
+                    <p id="product-rating">Rating unavailable</p>
+                </div>
+
                 <div class="score-section">
                     <div class="score-circle">
                         <span id="trust-score-val">--</span>
@@ -52,6 +58,14 @@
                     <span>Analyzed:</span>
                     <span id="total-reviews">0 reviews</span>
                 </div>
+                <div class="info-row">
+                    <span>Avg Confidence:</span>
+                    <span id="avg-confidence">--%</span>
+                </div>
+                <div class="info-row">
+                    <span>Recommendation:</span>
+                    <span id="recommendation">--</span>
+                </div>
 
                 <div class="risk-section">
                     <h4>Risk Indicators</h4>
@@ -60,7 +74,10 @@
                     </ul>
                 </div>
 
-                <button id="dashboard-btn" class="secondary-btn">View Detailed Report</button>
+                <div class="actions">
+                    <button id="rescan-btn" class="secondary-btn">Analyze Again</button>
+                    <button id="dashboard-btn" class="primary-btn">Report</button>
+                </div>
             </div>
         </main>
     </div>
